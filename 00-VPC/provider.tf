@@ -8,7 +8,7 @@ terraform {
   backend "s3" {
     bucket         = "expense-project-env-dev"
     region         = "us-east-1"
-    key            = "Project-expense-dev-vpc"
+    key            = "Project-expense-dev-jenkins-vpc"
     dynamodb_table = "expense-project-env-dev"
   }
 }
