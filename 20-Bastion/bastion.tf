@@ -1,5 +1,5 @@
 resource "aws_instance" "Nisar-Terraform-Instance" {
-  ami                    = ami = "ami-0220d79f3f480ecf5"
+  ami                    = "ami-0220d79f3f480ecf5"
   vpc_security_group_ids = [data.aws_ssm_parameter.bastion_sg_id.value]
   instance_type          = var.instance_type
   subnet_id              = local.public_subnet_id
