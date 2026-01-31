@@ -19,7 +19,7 @@ pipeline {
                 script{
                     withAWS(region: 'us-east-1', credentials: 'aws-creds') {
                         sh """
-                            cd 20-Bastion
+                            cd 20-bastion
                             terraform init -reconfigure
                             terraform plan
                         """
@@ -28,15 +28,15 @@ pipeline {
             }
         }
         stage('Apply') {
-            input {
+            /* input {
                 message "should we continue?"
                 ok "yes, we should."
-            }
+            } */
             steps {
                 script{
                     withAWS(region: 'us-east-1', credentials: 'aws-creds') {
                         sh """
-                            cd 20-Bastion
+                            cd 20-bastion
                             terraform apply -auto-approve
                         """
                     }
