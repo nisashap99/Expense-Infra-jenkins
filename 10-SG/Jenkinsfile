@@ -60,7 +60,7 @@ pipeline {
                         build job: '30-Rds', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
                     }
                 }
-                /* stage('40-eks') {
+                stage('40-eks') {
                     steps {
                         build job: '40-eks', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
                     }
@@ -72,7 +72,7 @@ pipeline {
                 } */
             }
         }
-        /*stage('Sequential') {
+        stage('Sequential') {
             stages {
                 stage('60-acm') {
                     steps {
@@ -85,7 +85,7 @@ pipeline {
                     }
                 }
             }
-        } */
+        } 
     }
     post { 
         always { 
