@@ -19,7 +19,7 @@ pipeline {
                script{
                 withAWS(region: 'us-east-1', credentials: 'aws-creds') {
                     sh """
-                        cd 10-sg
+                        cd 10-SG
                         terraform init -reconfigure
                         terraform plan
                     """
@@ -37,7 +37,7 @@ pipeline {
                script{
                 withAWS(region: 'us-east-1', credentials: 'aws-creds') {
                     sh """
-                        cd 10-sg
+                        cd 10-SG
                         terraform apply -auto-approve
                     """
                 }
@@ -50,14 +50,14 @@ pipeline {
                 expression { params.ACTION == 'apply'}
             }
             parallel {
-                stage('20-bastion') {    
+                stage('20-Bastion') {    
                     steps {
-                        build job: '20-bastion', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
+                        build job: '20-Bastion', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
                     }
                 }
                 stage('30-rds') {
                     steps {
-                        build job: '30-rds', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
+                        build job: '30-Rds', parameters: [string(name: 'ACTION', value: 'apply')], wait: false
                     }
                 }
                 stage('40-eks') {
